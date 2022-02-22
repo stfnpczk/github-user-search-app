@@ -1,17 +1,46 @@
 /*----------------------------
       layout
  ----------------------------*/
-  
-  
-  
+body {
+  display: flex;
+  background-color: #f2f2f2;
+  justify-content: center;
+}
+
+.page-wrapper {
+  margin: 31px 0 0;
+}
 /*----------------------------
-      ??? section
+      header section
 ----------------------------*/
-  
-  
-  
+.header {
+  display: flex;
+  gap: 117px;
+
+  &__logo {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 38.5px;
+  }
+
+  &__button-dark {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 19.25px;
+    letter-spacing: 2.5px;
+    gap: 16px;
+    border: none;
+    padding: 0;
+    
+    color: $queen-blue;
+    
+  }
+
+
+}
+
 /*----------------------------
       footer section 
 ----------------------------*/
-  
-  
