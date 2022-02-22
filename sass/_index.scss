@@ -1,7 +1,7 @@
 /*----------------------------
       layout
  ----------------------------*/
-body {
+ body {
   display: flex;
   background-color: #f2f2f2;
   justify-content: center;
@@ -33,14 +33,59 @@ body {
     gap: 16px;
     border: none;
     padding: 0;
-    
+    background: none;
     color: $queen-blue;
-    
   }
-
-
 }
 
 /*----------------------------
-      footer section 
+      main (user) section 
 ----------------------------*/
+
+.user {
+  &__form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fefefe;
+    border-radius: 15px;
+    box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+    margin: 54px 0;
+    width: 327px;
+    height: 60px;
+  }
+
+  &__search-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+  }
+
+  &__input {
+    border: none;
+    background: none;
+    font-family: "Space Mono", monospace;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 25px;
+    flex-basis: 184px;
+  }
+
+  &__search-button {
+    border-radius: 10px;
+    border: none;
+    flex-basis: 84px;
+    height: 46px;
+    background: $blue;
+    margin-right: 7px;
+
+    font-family: Space Mono;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: $white;
+  }
+}
