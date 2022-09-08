@@ -3,13 +3,23 @@
  ----------------------------*/
  body {
   display: flex;
-  background-color: #f2f2f2;
+  background-color: var(--body-bg);
   justify-content: center;
+  transition: all 1s ease;
 }
 
 .page-wrapper {
   margin: 31px 24px 0;
-  max-width: 450px;
+  width: clamp(327px, 100vw, 450px);
+
+  @media only screen and (min-width: $tablet) {
+    width: clamp(573px, 74.609375vw, 665px);
+  }
+
+  @media only screen and (min-width: $desktop) {
+    width: clamp(730px, 50.6944444444vw, 850px);
+    margin: 144px 0 0;
+  }
 }
 /*----------------------------
       header section
@@ -23,9 +33,10 @@
     font-size: 26px;
     font-weight: 700;
     line-height: 38.5px;
+    color: var(--header-logo);
   }
 
-  &__button-dark {
+  &__button {
     display: flex;
     align-items: center;
     font-size: 13px;
@@ -37,32 +48,62 @@
     padding: 0;
     background: none;
     color: $queen-blue;
+    color: var(--toggle);
+  }
+
+  &__toggle {
+    fill: var(--toggle);
+    transition: all 0.3s ease-in;
+  }
+
+  &__toggle-word {
+    transition: all 0.3s ease-in;
+  }
+
+  &__button:hover {
+    .header__toggle {
+      fill: var(--toggle-hover);
+    }
+
+    .header__toggle-word {
+      color: var(--toggle-hover);
+    }
   }
 }
 
 /*----------------------------
-      main (user) section 
+       section 
 ----------------------------*/
 
-.user {
-  &__form {
+.search {
+  & {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fefefe;
+    background: var(--card-bg);
     border-radius: 15px;
-    // padding: 18px 7px 18px 16px;
     box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
     margin: 36px 0 16px;
-    // gap: 7px;
-    // width: 327px;
+    gap: 7px;
     height: 60px;
+    transition: all 1s ease;
+
+    @media only screen and (min-width: $tablet) {
+      height: 69px;
+      gap: 24px;
+    }
   }
 
-  &__search-icon {
+  &__icon {
     width: 20px;
     height: 20px;
     margin-left: 10px;
+
+    @media only screen and (min-width: $tablet) {
+      width: 24px;
+      height: 24px;
+      margin-left: 32px;
+    }
   }
 
   &__input {
@@ -70,49 +111,109 @@
     background: none;
     font-family: "Space Mono", monospace;
     font-size: 13px;
+    font-size: clamp(12px, 3vw, 13px);
     font-weight: 400;
     line-height: 25px;
-    // width: 100%;
-    flex-basis: 184px;
+    width: calc(100% - 84px);
+    color: var(--text-primary);
+    // position: relative;
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 18px;
+    }
   }
 
-  &__search-button {
+  &__error {
+    font-weight: 700;
+    line-height: 22px;
+    color: $red;
+    margin: 0 12px 0 0;
+    display: none;
+  }
+
+  &.error &__error {
+    display: block;
+    white-space: nowrap;
+  }
+
+  &__button {
     border-radius: 10px;
     border: none;
-    // width: 84px;
-    flex-basis: 84px;
-    height: 46px;
+    width: 84px;
+    flex-shrink: 0;
+    height: 50px;
     background: $blue;
     margin-right: 7px;
 
-    font-family: Space Mono;
     font-size: 14px;
-    font-style: normal;
     font-weight: 700;
     line-height: 21px;
-    letter-spacing: 0px;
     text-align: center;
     color: $white;
-  }
+    transition: all 0.3s ease-in;
 
-  &__card {
-    // display: flex;
-    background: #fefefe;
+    @media only screen and (min-width: $tablet) {
+      width: 106px;
+      margin-right: 10px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  &__button:hover {
+    background: hsla(212, 100%, 69%, 1);
+  }
+}
+
+.card {
+  & {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    column-gap: 19px;
+    background: var(--card-bg);
     border-radius: 15px;
     padding: 32px 24px 48px;
-    box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.1986);;
+    box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.1986);
+    transition: all 1s ease;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 40px;
+      grid-template-columns: 117px 1fr;
+      column-gap: 41px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-rows: 85px;
+      column-gap: 37px;
+      padding: 48px;
+    }
   }
 
   &__details {
     display: flex;
     gap: 19px;
-    // width: 70px;
-    // height: 70px;
+
+    @media only screen and (min-width: $tablet) {
+      gap: 41px;
+    }
   }
 
   &__image-container {
     width: 70px;
     height: 70px;
+
+    @media only screen and (min-width: $tablet) {
+      width: 117px;
+      height: 117px;
+    }
+  }
+
+  &__data-container {
+    @media only screen and (min-width: $desktop) {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto 1fr;
+    }
   }
 
   &__profile-img {
@@ -123,35 +224,88 @@
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
+    color: var(--accent);
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 26px;
+      line-height: 38px;
+    }
   }
 
   &__handle {
     color: $blue;
+    font-size: 13px;
+    line-height: 19px;
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
-  &__joining-date {
+  &__joindate {
     color: $gray;
+    font-size: 13px;
+    line-height: 19px;
+    color: var(--date-color);
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      grid-row: 1;
+      grid-column: 2;
+      align-self: center;
+      justify-self: end;
+    }
   }
 
-  &__description {
+  &__bio {
+    font-size: 13px;
     line-height: 25px;
     margin: 33px 0 23px;
+    color: var(--text-primary);
+    grid-column: 1/-1;
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 15px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      // overflow-wrap: anywhere;
+      grid-column: 2/-1;
+      margin: 0;
+    }
   }
 
   &__stats {
-    display: flex;
-    justify-content: space-between;
-    background: #f6f8ff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
+    grid-column: 1/-1;
+    background: var(--body-bg);
     border-radius: 10px;
     padding: 18px 30px;
-    // gap: 82px;
+    transition: all 1s ease;
+
+    @media only screen and (min-width: $desktop) {
+      grid-column: 2/-1;
+      margin: 32px 0 37px;
+    }
   }
 
-  &__stat-label {
+  &__stat {
     font-size: 11px;
     line-height: 16px;
     text-align: center;
-    color: $queen-blue;
+    color: var(--text-primary);
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 13px;
+      line-height: 19px;
+    }
   }
 
   &__numbers {
@@ -160,20 +314,49 @@
     font-weight: 700;
     line-height: 24px;
     text-align: center;
-    color: $black;
+    color: var(--accent);
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 22px;
+      line-height: 33px;
+      text-align: left;
+    }
   }
 
-
   &__info-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1/-1;
     gap: 16px;
-    margin:24px 0 0;
+    margin: 24px 0 0;
+
+    @media only screen and (min-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+      margin: 30px 0 0;
+      column-gap: 60px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      grid-column: 2/-1;
+      margin: 0;
+    }
   }
 
   &__intel {
     display: flex;
     gap: 16px 19.25px;
+    align-items: center;
+  }
+
+  &__icon {
+    fill: var(--text-primary);
+  }
+
+  &__intel--link {
+    @media only screen and (min-width: $tablet) {
+      grid-row: 2;
+      grid-column: 1;
+    }
   }
 
   &__intel-icon {
@@ -181,8 +364,22 @@
     height: 20px;
   }
 
-  &__location-icon{
+  &__location-icon {
     margin-right: 6.25px;
   }
 
+  &__intel-text {
+    font-size: 13px;
+    line-height: 19px;
+    color: var(--text-primary);
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 15px;
+      line-height: 22px;
+    }
+  }
+}
+
+.gray {
+  opacity: 0.5;
 }
