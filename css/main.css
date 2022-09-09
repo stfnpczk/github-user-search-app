@@ -424,7 +424,7 @@ body {
 }
 @media only screen and (min-width: 90rem) {
   .page-wrapper {
-    width: clamp(45.625rem, 50.6944444444vw, 53.125rem);
+    width: clamp(45.625rem, 55vw, 53.125rem);
     margin: 9rem 0 0;
   }
 }
